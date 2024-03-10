@@ -24,14 +24,6 @@ namespace BusinessLogicLayer.Services
             {
                 var upcomingEvents = _dbContext.Events
                 .Where(e => e.Date >= DateTime.Now)
-                //.Select(e => new EventDetailsDTO
-                //{
-                //    EventName = e.EventName,
-                //    Date = e.Date,
-                //    Time = e.Time,
-                //    Location = e.Location,
-                //    Description = e.Description,
-                //})
                 .ToList();
 
                 return upcomingEvents;
@@ -99,14 +91,6 @@ namespace BusinessLogicLayer.Services
                 var registeredEvents = _dbContext.GuestListAttendees
                 .Where(gla => gla.AttendeeID == attendeeId)
                 .Select(gla => gla.GuestList.Event)
-                //.Select(a => new EventDetailsDTO()
-                //{
-                //    EventName = a.EventName,
-                //    Date = a.Date,
-                //    Time = a.Time,
-                //    Location = a.Location,
-                //    Description = a.Description
-                //})
                 .ToList();
 
                 return registeredEvents;
