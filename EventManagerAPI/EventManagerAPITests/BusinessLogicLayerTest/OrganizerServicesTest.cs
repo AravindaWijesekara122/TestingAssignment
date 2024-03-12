@@ -63,13 +63,14 @@ namespace EventManagerAPITests.BusinessLogicLayerTest
         public void GetEvents_ReturnsAllEvents()
         {
             // Arrange
+
             var events = new List<Event>()
             {
                 new Event { EventID = 1 },
                 new Event { EventID = 2 }
             };
 
-            _mockDbContext.Setup(m => m.Events).Returns((DbSet<Event>)events.AsQueryable());
+            _mockDbContext.Setup(m => m.Events).Returns((DbSet<Event>)events.AsEnumerable());
 
             // Act
             var returnedEvents = _organizerService.GetEvents();
@@ -77,6 +78,7 @@ namespace EventManagerAPITests.BusinessLogicLayerTest
             // Assert
             Assert.NotNull(returnedEvents);
             Assert.Equal(2, returnedEvents.Count());
+            Assert.IsType<Event>(returnedEvents);
         }
 
         [Fact]
