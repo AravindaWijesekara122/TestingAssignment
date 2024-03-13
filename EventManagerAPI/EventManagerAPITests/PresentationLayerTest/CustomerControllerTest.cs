@@ -45,7 +45,7 @@ namespace EventManagerAPITests.PresentationLayerTest
             Assert.NotNull(okObjectResult);
             Assert.Equal(200, okObjectResult.StatusCode);
             Assert.IsAssignableFrom<IEnumerable<Event>>(okObjectResult.Value); // Ensure returned value is IEnumerable<Event>
-                                                                 // Optional: You can also assert on the specific events returned
+                                                                 
         }
 
         [Fact]
